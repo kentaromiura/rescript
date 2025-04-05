@@ -4,7 +4,7 @@ var format_usage = `Usage: rescript convert <options> [files]
 
 \`rescript convert\` converts the current directory
 
-**This command removes old Reason/OCaml files and creates new ReScript 
+**This command removes old Reason/OCaml files and creates new ReScript
 files. Make sure your work is saved first!**
 `;
 
@@ -51,15 +51,12 @@ function handleOneFile(file, bsc_exe) {
     (error, stdout, stderr) => {
       if (error === null) {
         // todo
-        fs.unlink(file, () => {
-          //ignore
-        });
       } else {
         // todo error handling
         console.error(`Error when converting ${file}`);
         console.log(stderr);
       }
-    }
+    },
   );
 }
 /**
@@ -91,7 +88,7 @@ function main(argv, rescript_exe, bsc_exe) {
         ["info", "-list-files"],
         {
           encoding: "utf-8",
-        }
+        },
       );
       if (output.status !== 0) {
         console.error(output.stdout);
